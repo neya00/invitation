@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="첫 번째 생일을 함께 축하하는 모바일 초대장입니다."
+    />
+    <title>유주의 초대장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Kalam:wght@300;400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="site">
+      <section class="cover section" aria-label="초대장 표지">
+        <div class="cover-art">
+          <svg
+            class="burst-lines"
+            viewBox="0 0 360 260"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <path d="M36 92c24 16 44 24 60 26" />
+            <path d="M58 54c16 14 28 25 38 38" />
+            <path d="M83 31c12 14 20 27 25 40" />
+            <path d="M324 96c-28 16-49 24-64 25" />
+            <path d="M302 53c-17 16-30 30-39 43" />
+            <path d="M271 29c-11 15-18 29-22 42" />
+            <path d="M40 176c24-6 42-16 56-29" />
+            <path d="M76 219c15-20 29-36 44-48" />
+            <path d="M320 176c-24-6-43-16-57-29" />
+            <path d="M284 219c-15-20-29-36-44-48" />
+          </svg>
+          <div class="hero-photo">
+            <img
+              src="main.png"
+              alt="선글라스를 쓴 유주"
+            />
+          </div>
+        </div>
+        <p class="eyebrow">King of the wild things</p>
+        <h1><span>Wild One</span></h1>
+        <p class="cover__names">YUJU</p>
+        <p class="cover__date">is turning one<br />2026. 07. 18. Sat · 12:00 PM</p>
+      </section>
+
+      <section class="section message" aria-labelledby="message-title">
+        <p class="eyebrow">Invitation</p>
+        <h2 id="message-title">소중한 첫 생일에 초대합니다</h2>
+        <p>
+          작고 여린 손을 처음 잡았던 날이 엊그제 같은데, 어느새 유주가
+          첫 번째 생일을 맞이합니다.
+        </p>
+        <p>
+          그동안 보내주신 따뜻한 사랑과 축복에 감사드리며, 소중한 분들을
+          모시고 조용하고 따뜻한 자리를 나누고자 합니다.
+        </p>
+        <p>함께해 주시면 더없이 기쁘겠습니다.</p>
+      </section>
+
+      <section class="section gallery" aria-labelledby="gallery-title">
+        <p class="eyebrow">Gallery</p>
+        <h2 id="gallery-title">반짝였던 순간들</h2>
+        <div class="gallery__grid" id="galleryGrid" aria-live="polite"></div>
+      </section>
+
+      <section class="section info" aria-labelledby="info-title">
+        <p class="eyebrow">Party Information</p>
+        <h2 id="info-title">모시는 날</h2>
+        <dl class="info-list">
+          <div>
+            <dt>날짜</dt>
+            <dd>2026년 7월 18일 토요일</dd>
+          </div>
+          <div>
+            <dt>시간</dt>
+            <dd>오후 12시</dd>
+          </div>
+          <div>
+            <dt>장소</dt>
+            <dd>라온제나 파티하우스 2층</dd>
+          </div>
+          <div>
+            <dt>주소</dt>
+            <dd>서울특별시 강남구 테헤란로 123</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="section map" aria-labelledby="map-title">
+        <p class="eyebrow">Location</p>
+        <h2 id="map-title">오시는 길</h2>
+        <div class="map-card">
+          <p class="map-card__venue">라온제나 파티하우스</p>
+          <p>서울특별시 강남구 테헤란로 123</p>
+        </div>
+        <div class="map-actions">
+          <a
+            class="button"
+            id="naverMapButton"
+            href="https://map.naver.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            네이버 지도
+          </a>
+          <a
+            class="button button--outline"
+            id="kakaoMapButton"
+            href="https://map.kakao.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            카카오맵
+          </a>
+        </div>
+      </section>
+
+      <section class="section closing" aria-label="마무리 인사">
+        <p>
+          유주의 첫 생일을 기억해 주시는 모든 분들께 진심으로 감사드립니다.
+        </p>
+        <strong>따뜻한 마음으로 기다리겠습니다.</strong>
+      </section>
+    </main>
+
+    <button class="top-button" type="button" aria-label="맨 위로 이동">
+      ↑
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
