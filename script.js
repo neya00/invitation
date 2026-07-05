@@ -27,16 +27,21 @@ window.addEventListener("resize", () => {
   setStableHeroHeight();
 });
 
+const galleryPhoto = document.querySelector("#galleryPhoto");
+const galleryBasePath = galleryPhoto.src.slice(
+  0,
+  galleryPhoto.src.lastIndexOf("/") + 1,
+);
+
 const galleryPhotos = Array.from({ length: 21 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
 
   return {
-    src: `../img/gallery/${number}.jpeg`,
+    src: `${galleryBasePath}${number}.jpeg`,
     alt: `유주의 사진 ${index + 1}`,
   };
 });
 
-const galleryPhoto = document.querySelector("#galleryPhoto");
 const galleryPrev = document.querySelector("#galleryPrev");
 const galleryNext = document.querySelector("#galleryNext");
 const galleryDots = document.querySelector("#galleryDots");
@@ -69,7 +74,7 @@ const renderGalleryPhoto = () => {
 
   galleryPhoto.onerror = () => {
     galleryPhoto.onerror = null;
-    galleryPhoto.src = "../img/main.png";
+    galleryPhoto.src = "./img/main.png";
   };
   galleryPhoto.src = photo.src;
   galleryPhoto.alt = photo.alt;
