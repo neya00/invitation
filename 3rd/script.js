@@ -33,12 +33,10 @@ const galleryPhotos = Array.from({ length: 21 }, (_, index) => {
   return {
     src: `../img/gallery/${number}.jpeg`,
     alt: `유주의 사진 ${index + 1}`,
-    caption: `Yuju photo ${number}`,
   };
 });
 
 const galleryPhoto = document.querySelector("#galleryPhoto");
-const galleryCaption = document.querySelector("#galleryCaption");
 const galleryPrev = document.querySelector("#galleryPrev");
 const galleryNext = document.querySelector("#galleryNext");
 const galleryDots = document.querySelector("#galleryDots");
@@ -75,7 +73,6 @@ const renderGalleryPhoto = () => {
   };
   galleryPhoto.src = photo.src;
   galleryPhoto.alt = photo.alt;
-  galleryCaption.textContent = photo.caption;
   renderGalleryDots();
 };
 

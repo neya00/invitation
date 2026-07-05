@@ -227,7 +227,7 @@ h2 {
   position: relative;
   z-index: 1;
   margin: 0;
-  padding: 14px 14px 42px;
+  padding: 14px;
   border: 3px solid rgba(141, 174, 226, 0.5);
   border-radius: 26px;
   background:
@@ -257,18 +257,6 @@ h2 {
   background: #f8ead7;
   -webkit-user-drag: none;
   user-select: none;
-}
-
-.gallery-slide figcaption {
-  position: absolute;
-  left: 20px;
-  right: 20px;
-  bottom: 13px;
-  color: #725747;
-  font-family: var(--sketch-font);
-  font-size: 1.1rem;
-  font-weight: 700;
-  line-height: 1;
 }
 
 .gallery-frame__deco {
