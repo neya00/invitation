@@ -27,12 +27,11 @@ window.addEventListener("resize", () => {
   setStableHeroHeight();
 });
 
-const galleryPhotos = Array.from({ length: 10 }, (_, index) => {
+const galleryPhotos = Array.from({ length: 21 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
 
   return {
-    src: `../img/gallery/${number}.png`,
-    fallbackSrc: `../img/gallery/${number}.jpg`,
+    src: `../img/gallery/${number}.jpeg`,
     alt: `유주의 사진 ${index + 1}`,
     caption: `Yuju photo ${number}`,
   };
@@ -71,11 +70,8 @@ const renderGalleryPhoto = () => {
   const photo = galleryPhotos[galleryIndex];
 
   galleryPhoto.onerror = () => {
-    galleryPhoto.onerror = () => {
-      galleryPhoto.onerror = null;
-      galleryPhoto.src = "../img/main.png";
-    };
-    galleryPhoto.src = photo.fallbackSrc;
+    galleryPhoto.onerror = null;
+    galleryPhoto.src = "../img/main.png";
   };
   galleryPhoto.src = photo.src;
   galleryPhoto.alt = photo.alt;
