@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="유주의 첫 번째 생일을 알리는 파스텔 동물 초대장입니다."
+    />
+    <title>유주의 생일파티 초대장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Nunito:wght@700;800;900&family=Poor+Story&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="invite">
+      <section class="cover" aria-label="초대장 표지">
+        <div class="cover__content">
+          <p class="eyebrow">Join us for</p>
+          <h1><span>Yuju's</span> 1st Birthday</h1>
+          <div class="cover__rule" aria-hidden="true"></div>
+          <p class="cover__time">
+            <span>7월 18일</span> 
+            <span>2:30 PM</span>
+          </p>
+          <p class="cover__place">강원 속초시 철새길 37, 2층 Ondiv</p>
+          <p class="cover__rsvp">With</br>DAD 지웅 & MOM 지성</p>
+        </div>
+      </section>
+
+      <section class="section message" aria-labelledby="message-title">
+        <p class="eyebrow">Invitation</p>
+        <h2 id="message-title">소중한 첫 생일에 초대합니다</h2>
+        <p>
+          작고 여린 손을 처음 잡았던 날이 엊그제 같은데, 어느새 유주가
+          첫 번째 생일을 맞이합니다.
+        </p>
+        <p>
+          따뜻한 사랑으로 지켜봐 주신 분들을 모시고 즐겁고 포근한 시간을
+          나누고 싶습니다.
+        </p>
+      </section>
+
+      <section class="section photo-section" aria-labelledby="photo-title">
+        <p class="eyebrow">Birthday Baby</p>
+        <h2 id="photo-title">오늘의 주인공</h2>
+        <div class="photo-carousel" aria-roledescription="carousel" tabindex="0">
+          <div class="photo-carousel__viewport" id="photoCarousel" aria-live="polite"></div>
+          <button
+            class="photo-carousel__button photo-carousel__button--prev"
+            type="button"
+            aria-label="이전 사진"
+            id="photoPrevButton"
+          >
+            ‹
+          </button>
+          <button
+            class="photo-carousel__button photo-carousel__button--next"
+            type="button"
+            aria-label="다음 사진"
+            id="photoNextButton"
+          >
+            ›
+          </button>
+          <div class="photo-carousel__dots" id="photoDots" aria-label="사진 순서"></div>
+        </div>
+      </section>
+
+      <section class="section info" aria-labelledby="info-title">
+        <p class="eyebrow">Party Info</p>
+        <h2 id="info-title">모시는 날</h2>
+        <div class="calendar-card" aria-label="2026년 7월 달력">
+          <div class="calendar-card__header">
+            <span>2026</span>
+            <strong>July</strong>
+          </div>
+          <div class="calendar-grid calendar-grid--weekdays" aria-hidden="true">
+            <span>Sun</span>
+            <span>Mon</span>
+            <span>Tue</span>
+            <span>Wed</span>
+            <span>Thu</span>
+            <span>Fri</span>
+            <span>Sat</span>
+          </div>
+          <div class="calendar-grid">
+            <span class="calendar-day calendar-day--empty"></span>
+            <span class="calendar-day calendar-day--empty"></span>
+            <span class="calendar-day calendar-day--empty"></span>
+            <span class="calendar-day">1</span>
+            <span class="calendar-day">2</span>
+            <span class="calendar-day">3</span>
+            <span class="calendar-day">4</span>
+            <span class="calendar-day">5</span>
+            <span class="calendar-day">6</span>
+            <span class="calendar-day">7</span>
+            <span class="calendar-day">8</span>
+            <span class="calendar-day">9</span>
+            <span class="calendar-day">10</span>
+            <span class="calendar-day">11</span>
+            <span class="calendar-day">12</span>
+            <span class="calendar-day">13</span>
+            <span class="calendar-day">14</span>
+            <span class="calendar-day">15</span>
+            <span class="calendar-day">16</span>
+            <span class="calendar-day">17</span>
+            <span class="calendar-day calendar-day--birthday">
+              <strong>18</strong>
+              <small>my Birthday</small>
+            </span>
+            <span class="calendar-day">19</span>
+            <span class="calendar-day">20</span>
+            <span class="calendar-day">21</span>
+            <span class="calendar-day">22</span>
+            <span class="calendar-day">23</span>
+            <span class="calendar-day">24</span>
+            <span class="calendar-day">25</span>
+            <span class="calendar-day">26</span>
+            <span class="calendar-day">27</span>
+            <span class="calendar-day">28</span>
+            <span class="calendar-day">29</span>
+            <span class="calendar-day">30</span>
+            <span class="calendar-day">31</span>
+          </div>
+        </div>
+        <dl class="info-list">
+          <div>
+            <dt>Date</dt>
+            <dd>2026년 7월 18일 토요일</dd>
+          </div>
+          <div>
+            <dt>Time</dt>
+            <dd>오후 2시 30분</dd>
+          </div>
+          <div>
+            <dt>Place</dt>
+            <dd>온디브</dd>
+          </div>
+          <div>
+            <dt>Address</dt>
+            <dd>강원 속초시 철새길 37 2층</dd>
+          </div>
+        </dl>
+      </section>
+
+      <section class="section map" aria-labelledby="map-title">
+        <p class="eyebrow">Location</p>
+        <h2 id="map-title">오시는 길</h2>
+        <div class="map-card">
+          <p class="map-card__venue">온디브</p>
+          <p>강원 속초시 철새길 37 2층</p>
+        </div>
+        <div class="map-actions">
+          <a
+            class="button"
+            id="naverMapButton"
+            href="https://naver.me/FCAfNJUo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            네이버 지도
+          </a>
+          <a
+            class="button button--accent"
+            id="kakaoMapButton"
+            href="https://place.map.kakao.com/1540127315"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            카카오맵
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <button class="top-button" type="button" aria-label="맨 위로 이동">
+      ↑
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>

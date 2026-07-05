@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="유주의 첫 번째 생일을 알리는 깨끗하고 아기자기한 초대장입니다."
+    />
+    <title>유주의 첫 생일 초대장</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@400;700&family=Gaegu:wght@400;700&family=Jua&family=Nunito:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="invitation">
+      <section class="hero" aria-label="초대장 표지">
+        <div class="hero__header">
+          <h1 class="hero__title">
+            <span>Yuju's</span>
+            <span>1st Birthday</span>
+          </h1>
+          <p class="hero__party-time">
+            <span>2026. 07. 18. Sat</span>
+            <span>2:30 PM</span>
+          </p>
+        </div>
+
+        <img
+          class="hero__girl"
+          src="../img/birthday_girl.png"
+          alt="생일 모자를 쓴 유주"
+        />
+      </section>
+
+      <section class="section intro" aria-labelledby="intro-title">
+        <p class="section__eyebrow">Invitation</p>
+        <h2 id="intro-title">저의 첫번째 생일에 초대합니다!</h2>
+        <p>
+          안녕하세요, 저 유주예요!
+          제가 드디어 1살이 되었어요!
+          더운 여름에 태어나 낙엽이 떨어지는 첫 가을을 보내고,
+          처음으로 본 하얗고 반짝거리던 눈이 내리는 겨울을 지나,
+          첫 꽃을 보는 봄을 보냈어요.
+          그리고 드디어 제가 태어난 두번째 여름의 중간에 제 생일 파티를 열어요!<br />
+          모두 오셔서 제 첫 생일을 축하해 주세요~ 
+        </p>
+      </section>
+
+      <section class="section gallery" aria-labelledby="gallery-title">
+        <p class="section__eyebrow">Photo Album</p>
+        <h2 id="gallery-title">유주의 순간들</h2>
+        <div class="gallery-frame" aria-roledescription="carousel">
+          <img
+            class="gallery-frame__deco gallery-frame__deco--elephant"
+            src="assets/elephant.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <figure class="gallery-slide">
+            <img id="galleryPhoto" src="../img/gallery/01.png" alt="유주의 사진 1" />
+            <figcaption id="galleryCaption">Yuju photo 01</figcaption>
+          </figure>
+          <img
+            class="gallery-frame__deco gallery-frame__deco--bunny"
+            src="assets/bunny.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <button
+            class="gallery-button gallery-button--prev"
+            type="button"
+            id="galleryPrev"
+            aria-label="이전 사진"
+          >
+            ‹
+          </button>
+          <button
+            class="gallery-button gallery-button--next"
+            type="button"
+            id="galleryNext"
+            aria-label="다음 사진"
+          >
+            ›
+          </button>
+        </div>
+        <div class="gallery-dots" id="galleryDots" aria-label="사진 순서"></div>
+      </section>
+
+      <section class="section details" aria-labelledby="details-title">
+        <p class="section__eyebrow">Party Info</p>
+        <h2 id="details-title">모시는 날</h2>
+        <dl class="detail-list">
+          <div>
+            <dt>날짜</dt>
+            <dd>2026년 7월 18일 토요일</dd>
+          </div>
+          <div>
+            <dt>시간</dt>
+            <dd>오후 2시 30분</dd>
+          </div>
+          <div>
+            <dt>장소</dt>
+            <dd>온디브</dd>
+          </div>
+          <div>
+            <dt>주소</dt>
+            <dd>강원 속초시 철새길 37 2층</dd>
+          </div>
+        </dl>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>
