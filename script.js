@@ -31,7 +31,7 @@ const galleryPhotos = Array.from({ length: 21 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
 
   return {
-    src: `../img/gallery/${number}.jpeg`,
+    src: `./img/gallery/${number}.jpeg`,
     alt: `유주의 사진 ${index + 1}`,
   };
 });
@@ -69,7 +69,7 @@ const renderGalleryPhoto = () => {
 
   galleryPhoto.onerror = () => {
     galleryPhoto.onerror = null;
-    galleryPhoto.src = "../img/main.png";
+    galleryPhoto.src = "./img/main.png";
   };
   galleryPhoto.src = photo.src;
   galleryPhoto.alt = photo.alt;
