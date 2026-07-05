@@ -1,5 +1,32 @@
 document.documentElement.classList.add("is-ready");
 
+let stableViewportWidth = window.innerWidth;
+
+const setStableHeroHeight = () => {
+  document.documentElement.style.setProperty(
+    "--hero-height",
+    `${window.innerHeight}px`,
+  );
+};
+
+setStableHeroHeight();
+
+window.addEventListener("orientationchange", () => {
+  window.setTimeout(() => {
+    stableViewportWidth = window.innerWidth;
+    setStableHeroHeight();
+  }, 250);
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth === stableViewportWidth) {
+    return;
+  }
+
+  stableViewportWidth = window.innerWidth;
+  setStableHeroHeight();
+});
+
 const galleryPhotos = Array.from({ length: 10 }, (_, index) => {
   const number = String(index + 1).padStart(2, "0");
 

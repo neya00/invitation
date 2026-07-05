@@ -58,7 +58,8 @@ p {
 
 .hero {
   position: relative;
-  min-height: 100svh;
+  min-height: var(--hero-height, 100svh);
+  height: var(--hero-height, 100svh);
   overflow: hidden;
   padding: max(32px, env(safe-area-inset-top)) 28px 32px;
   background:
@@ -97,7 +98,7 @@ p {
   bottom: 10%;
   z-index: 1;
   width: min(64.8vw, 320px);
-  max-height: 55.8svh;
+  max-height: calc(var(--hero-height, 100svh) * 0.558);
   display: block;
   object-fit: contain;
   object-position: center bottom;
@@ -422,7 +423,7 @@ h2 {
 
   .hero__girl {
     width: min(68.4vw, 297px);
-    max-height: 54svh;
+    max-height: calc(var(--hero-height, 100svh) * 0.54);
   }
 
   .hero__title {
