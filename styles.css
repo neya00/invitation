@@ -242,12 +242,15 @@ h2 {
   content: "";
   position: absolute;
   inset: 8px;
+  z-index: 2;
   border: 2px dashed rgba(244, 183, 198, 0.62);
   border-radius: 20px;
   pointer-events: none;
 }
 
 .gallery-slide img {
+  position: relative;
+  z-index: 1;
   width: 100%;
   aspect-ratio: 4 / 5;
   display: block;
