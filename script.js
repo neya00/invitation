@@ -27,128 +27,137 @@ window.addEventListener("resize", () => {
   setStableHeroHeight();
 });
 
-const galleryPhoto = document.querySelector("#galleryPhoto");
-const galleryBasePath = galleryPhoto.src.slice(
-  0,
-  galleryPhoto.src.lastIndexOf("/") + 1,
-);
-
-const galleryPhotos = Array.from({ length: 21 }, (_, index) => {
-  const number = String(index + 1).padStart(2, "0");
-
-  return {
-    src: `${galleryBasePath}${number}.jpeg`,
-    alt: `유주의 사진 ${index + 1}`,
-  };
-});
-
+const galleryStrip = document.querySelector(".gallery-strip");
 const galleryPrev = document.querySelector("#galleryPrev");
 const galleryNext = document.querySelector("#galleryNext");
-const galleryDots = document.querySelector("#galleryDots");
-const galleryFrame = document.querySelector(".gallery-frame");
+const galleryBasePath = "./img/gallery/";
 
-let galleryIndex = 0;
-let galleryDragStartX = 0;
-let galleryDragStartY = 0;
-let galleryDragCurrentX = 0;
-let isGalleryDragging = false;
+if (galleryStrip) {
+  const galleryPhotos = Array.from({ length: 21 }, (_, index) => {
+    const number = String(index + 1).padStart(2, "0");
 
-const renderGalleryDots = () => {
-  galleryDots.innerHTML = galleryPhotos
-    .map(
-      (_, index) => `
-        <button
-          class="gallery-dot${index === galleryIndex ? " is-active" : ""}"
-          type="button"
-          aria-label="${index + 1}번째 사진 보기"
-          ${index === galleryIndex ? 'aria-current="true"' : ""}
-          data-gallery-index="${index}"
-        ></button>
-      `,
-    )
-    .join("");
-};
+    return {
+      src: `${galleryBasePath}${number}.jpeg`,
+      alt: `유주의 사진 ${index + 1}`,
+    };
+  });
 
-const renderGalleryPhoto = () => {
-  const photo = galleryPhotos[galleryIndex];
+  const visibleOffsets = [-1, 0, 1];
+  let galleryIndex = 0;
+  let galleryDragStartX = 0;
+  let galleryDragStartY = 0;
+  let galleryDragCurrentX = 0;
+  let isGalleryDragging = false;
 
-  galleryPhoto.onerror = () => {
-    galleryPhoto.onerror = null;
-    galleryPhoto.src = "./img/main.png";
+  const getWrappedIndex = (index) =>
+    (index + galleryPhotos.length) % galleryPhotos.length;
+
+  const renderGalleryStrip = () => {
+    galleryStrip.innerHTML = visibleOffsets
+      .map((offset) => {
+        const photoIndex = getWrappedIndex(galleryIndex + offset);
+        const photo = galleryPhotos[photoIndex];
+        const isCenter = offset === 0;
+
+        return `
+          <figure class="gallery-card${isCenter ? " gallery-card--center" : ""}">
+            ${
+              isCenter
+                ? `
+                  <img
+                    class="gallery-frame__deco gallery-frame__deco--elephant"
+                    src="assets/elephant.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                `
+                : ""
+            }
+            <img
+              src="${photo.src}"
+              alt="${photo.alt}"
+              loading="${isCenter ? "eager" : "lazy"}"
+              onerror="this.onerror=null; this.src='./img/main.png';"
+            />
+            ${
+              isCenter
+                ? `
+                  <img
+                    class="gallery-frame__deco gallery-frame__deco--bunny"
+                    src="assets/bunny.png"
+                    alt=""
+                    aria-hidden="true"
+                  />
+                `
+                : ""
+            }
+          </figure>
+        `;
+      })
+      .join("");
   };
-  galleryPhoto.src = photo.src;
-  galleryPhoto.alt = photo.alt;
-  renderGalleryDots();
-};
 
-const moveGallery = (direction) => {
-  galleryIndex =
-    (galleryIndex + direction + galleryPhotos.length) % galleryPhotos.length;
-  renderGalleryPhoto();
-};
+  const moveGallery = (direction) => {
+    galleryIndex = getWrappedIndex(galleryIndex + direction);
+    renderGalleryStrip();
+  };
 
-galleryPrev.addEventListener("click", () => moveGallery(-1));
-galleryNext.addEventListener("click", () => moveGallery(1));
+  galleryPrev.addEventListener("click", () => moveGallery(-1));
+  galleryNext.addEventListener("click", () => moveGallery(1));
 
-galleryDots.addEventListener("click", (event) => {
-  const dot = event.target.closest("[data-gallery-index]");
+  galleryStrip.addEventListener("pointerdown", (event) => {
+    if (event.target.closest("button")) {
+      return;
+    }
 
-  if (!dot) {
-    return;
-  }
+    isGalleryDragging = true;
+    galleryDragStartX = event.clientX;
+    galleryDragStartY = event.clientY;
+    galleryDragCurrentX = event.clientX;
+    galleryStrip.classList.add("is-dragging");
+    galleryStrip.setPointerCapture(event.pointerId);
+  });
 
-  galleryIndex = Number(dot.dataset.galleryIndex);
-  renderGalleryPhoto();
-});
+  galleryStrip.addEventListener("pointermove", (event) => {
+    if (!isGalleryDragging) {
+      return;
+    }
 
-galleryFrame.addEventListener("pointerdown", (event) => {
-  if (event.target.closest("button")) {
-    return;
-  }
+    galleryDragCurrentX = event.clientX;
+  });
 
-  isGalleryDragging = true;
-  galleryDragStartX = event.clientX;
-  galleryDragStartY = event.clientY;
-  galleryDragCurrentX = event.clientX;
-  galleryFrame.setPointerCapture(event.pointerId);
-});
+  galleryStrip.addEventListener("pointerup", (event) => {
+    if (!isGalleryDragging) {
+      return;
+    }
 
-galleryFrame.addEventListener("pointermove", (event) => {
-  if (!isGalleryDragging) {
-    return;
-  }
+    const deltaX = galleryDragCurrentX - galleryDragStartX;
+    const deltaY = event.clientY - galleryDragStartY;
+    const didSwipe =
+      Math.abs(deltaX) > 42 && Math.abs(deltaX) > Math.abs(deltaY);
 
-  galleryDragCurrentX = event.clientX;
-});
+    isGalleryDragging = false;
+    galleryStrip.classList.remove("is-dragging");
 
-galleryFrame.addEventListener("pointerup", (event) => {
-  if (!isGalleryDragging) {
-    return;
-  }
+    if (galleryStrip.hasPointerCapture(event.pointerId)) {
+      galleryStrip.releasePointerCapture(event.pointerId);
+    }
 
-  const deltaX = galleryDragCurrentX - galleryDragStartX;
-  const deltaY = event.clientY - galleryDragStartY;
-  const didSwipe = Math.abs(deltaX) > 48 && Math.abs(deltaX) > Math.abs(deltaY);
+    if (!didSwipe) {
+      return;
+    }
 
-  isGalleryDragging = false;
+    moveGallery(deltaX < 0 ? 1 : -1);
+  });
 
-  if (galleryFrame.hasPointerCapture(event.pointerId)) {
-    galleryFrame.releasePointerCapture(event.pointerId);
-  }
+  galleryStrip.addEventListener("pointercancel", (event) => {
+    isGalleryDragging = false;
+    galleryStrip.classList.remove("is-dragging");
 
-  if (!didSwipe) {
-    return;
-  }
+    if (galleryStrip.hasPointerCapture(event.pointerId)) {
+      galleryStrip.releasePointerCapture(event.pointerId);
+    }
+  });
 
-  moveGallery(deltaX < 0 ? 1 : -1);
-});
-
-galleryFrame.addEventListener("pointercancel", (event) => {
-  isGalleryDragging = false;
-
-  if (galleryFrame.hasPointerCapture(event.pointerId)) {
-    galleryFrame.releasePointerCapture(event.pointerId);
-  }
-});
-
-renderGalleryPhoto();
+  renderGalleryStrip();
+}
