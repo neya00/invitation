@@ -432,14 +432,18 @@ h2 {
 }
 
 .map-actions {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
-  width: min(100%, 360px);
+  width: min(100%, 340px);
   margin: 0 auto;
 }
 
 .map-button {
+  position: static;
+  width: 100%;
   min-width: 0;
   min-height: 48px;
   display: inline-flex;
@@ -453,7 +457,9 @@ h2 {
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
+  white-space: nowrap;
   box-shadow: 0 8px 16px rgba(111, 86, 63, 0.1);
+  transform: none;
 }
 
 .map-button--accent {
@@ -504,5 +510,10 @@ h2 {
     gap: 10px;
     padding-right: 12px;
     padding-left: 12px;
+  }
+
+  .map-actions {
+    grid-template-columns: 1fr;
+    width: min(100%, 280px);
   }
 }
