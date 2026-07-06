@@ -65,6 +65,7 @@ p {
   background:
     linear-gradient(rgba(255, 249, 237, 0.18), rgba(255, 249, 237, 0.18)),
     url("assets/animal-frame.png") center / cover no-repeat;
+  background-color: var(--paper);
   text-align: center;
   isolation: isolate;
   contain: paint;

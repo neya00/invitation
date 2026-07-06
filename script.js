@@ -1,5 +1,17 @@
 document.documentElement.classList.add("is-ready");
 
+const preloadImage = (src) => {
+  const image = new Image();
+  image.src = src;
+
+  if (image.decode) {
+    image.decode().catch(() => {});
+  }
+};
+
+preloadImage("assets/animal-frame.png");
+preloadImage("./img/birthday_girl.png");
+
 let stableViewportWidth = window.innerWidth;
 
 const setStableHeroHeight = () => {
