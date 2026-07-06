@@ -54,32 +54,18 @@
       <section class="section gallery" aria-labelledby="gallery-title">
         <p class="section__eyebrow">Photo Album</p>
         <h2 id="gallery-title">유주의 순간들</h2>
-        <div class="gallery-frame" aria-roledescription="carousel">
-          <img
-            class="gallery-frame__deco gallery-frame__deco--elephant"
-            src="assets/elephant.png"
-            alt=""
-            aria-hidden="true"
-          />
-          <figure class="gallery-slide">
-            <img id="galleryPhoto" src="./img/gallery/01.jpeg" alt="유주의 사진 1" />
-          </figure>
-          <img
-            class="gallery-frame__deco gallery-frame__deco--bunny"
-            src="assets/bunny.png"
-            alt=""
-            aria-hidden="true"
-          />
+        <div class="gallery-board">
           <button
-            class="gallery-button gallery-button--prev"
+            class="gallery-nav gallery-nav--prev"
             type="button"
             id="galleryPrev"
             aria-label="이전 사진"
           >
             ‹
           </button>
+          <div class="gallery-strip" aria-label="유주의 사진 모음"></div>
           <button
-            class="gallery-button gallery-button--next"
+            class="gallery-nav gallery-nav--next"
             type="button"
             id="galleryNext"
             aria-label="다음 사진"
@@ -87,7 +73,6 @@
             ›
           </button>
         </div>
-        <div class="gallery-dots" id="galleryDots" aria-label="사진 순서"></div>
       </section>
 
       <section class="section details" aria-labelledby="details-title">
