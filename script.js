@@ -49,52 +49,69 @@ if (galleryStrip) {
   let galleryDragCurrentX = 0;
   let isGalleryDragging = false;
 
+  galleryPhotos.forEach((photo) => {
+    const image = new Image();
+    image.src = photo.src;
+  });
+
   const getWrappedIndex = (index) =>
     (index + galleryPhotos.length) % galleryPhotos.length;
 
-  const renderGalleryStrip = () => {
-    galleryStrip.innerHTML = visibleOffsets
-      .map((offset) => {
-        const photoIndex = getWrappedIndex(galleryIndex + offset);
-        const photo = galleryPhotos[photoIndex];
-        const isCenter = offset === 0;
+  galleryStrip.innerHTML = visibleOffsets
+    .map(
+      (offset) => `
+        <figure class="gallery-card${offset === 0 ? " gallery-card--center" : ""}" data-gallery-offset="${offset}">
+          ${
+            offset === 0
+              ? `
+                <img
+                  class="gallery-frame__deco gallery-frame__deco--elephant"
+                  src="assets/elephant.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              `
+              : ""
+          }
+          <img
+            class="gallery-photo"
+            src=""
+            alt=""
+            ${offset === 0 ? "" : 'loading="lazy"'}
+            onerror="this.onerror=null; this.src='./img/main.png';"
+          />
+          ${
+            offset === 0
+              ? `
+                <img
+                  class="gallery-frame__deco gallery-frame__deco--bunny"
+                  src="assets/bunny.png"
+                  alt=""
+                  aria-hidden="true"
+                />
+              `
+              : ""
+          }
+        </figure>
+      `,
+    )
+    .join("");
 
-        return `
-          <figure class="gallery-card${isCenter ? " gallery-card--center" : ""}">
-            ${
-              isCenter
-                ? `
-                  <img
-                    class="gallery-frame__deco gallery-frame__deco--elephant"
-                    src="assets/elephant.png"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                `
-                : ""
-            }
-            <img
-              src="${photo.src}"
-              alt="${photo.alt}"
-              loading="${isCenter ? "eager" : "lazy"}"
-              onerror="this.onerror=null; this.src='./img/main.png';"
-            />
-            ${
-              isCenter
-                ? `
-                  <img
-                    class="gallery-frame__deco gallery-frame__deco--bunny"
-                    src="assets/bunny.png"
-                    alt=""
-                    aria-hidden="true"
-                  />
-                `
-                : ""
-            }
-          </figure>
-        `;
-      })
-      .join("");
+  const galleryCards = Array.from(galleryStrip.querySelectorAll(".gallery-card"));
+
+  const renderGalleryStrip = () => {
+    galleryCards.forEach((card) => {
+      const offset = Number(card.dataset.galleryOffset);
+      const photo = galleryPhotos[getWrappedIndex(galleryIndex + offset)];
+      const image = card.querySelector(".gallery-photo");
+
+      if (image.dataset.src !== photo.src) {
+        image.src = photo.src;
+        image.dataset.src = photo.src;
+      }
+
+      image.alt = photo.alt;
+    });
   };
 
   const moveGallery = (direction) => {
